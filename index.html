@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For my LabLab</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-image: url(heart.gif); /* Replace 'your-gif.gif' with the path/URL to your GIF */
+            background-size: cover; /* Adjusts the GIF to cover the entire background */
+            background-repeat: no-repeat; /* Prevents the GIF from repeating */
+            background-position: center; /* Centers the GIF */
+            margin: 0;
+        }
+        .frame {
+            width: 500px;
+            height: 300px;
+            border: 1px solid #ffffff;
+            border-radius: 20px;
+            background-color: #eed6d6;
+            position: relative;
+            padding: 20px;
+            box-shadow: 10 10px 10px #1D1616;
+        }
+        h1 {
+            position: absolute;
+            top: 40px; /* Position at the top for readability */
+            left: 45%;
+            transform: translateX(-40%);
+            margin: 0;
+            font-size: 24px;
+        }
+        #photo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 400px; /* Adjust size as needed */
+            max-height: 190px; /* Adjust size as needed */
+            border-radius: 5px; /* Optional: round corners */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            position: absolute;
+        }
+        #yes {  
+            background-color: #e71a35;
+            color: white;
+            left: 170px; /* Position side by side */
+            top: 280px; /* Moved down to make room for the photo */
+        }
+        #no {
+            background-color: #8E1616;
+            color: white;
+            left: 300px; /* Position side by side */
+            top: 280px; /* Moved down to make room for the photo */
+            transition: all 0.1s ease; /* Smooth slide movement */
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <h1>Will You Be My Valentine? </h1>
+        <img id="photo" src="wow.jpg" alt="Photo"> <!-- Replace with your photo path/URL -->
+        <button id="yes">Yes 💖</button>
+        <button id="no">No 😭</button>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+
+        noButton.addEventListener('mouseover', () => {
+            const frame = document.querySelector('.frame');
+            const frameRect = frame.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+
+            // Calculate new random position within the frame
+            const maxX = frameRect.width - buttonRect.width - 40; // Subtract padding
+            const maxY = frameRect.height - buttonRect.height - 40; // Subtract padding
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        });
+
+        yesButton.addEventListener('click', () => {
+            // Redirect to the yes page
+            window.location.href = 'yes.html';
+        });
+    </script>
+</body>
+</html>
